@@ -1,16 +1,14 @@
 {
-  "lang": "es-ES",
-  "background_color": "#2B3E50",
   "theme_color": "#ffffff",
-  "name": "Aplicaion para ver tallas",
-  "short_name": "AppTallas",
-  "start_url": "/",
+  "name": "App tallas de Ropa",
+  "short_name": "APP Tallas",
+  "description": "App para ver Tallas de ropa.",
   "display": "standalone",
-  "description": "App de tallas  echo con svelteJS",
-
+  "background_color": "#445566",
+  "start_url": "/",
   "icons": [
     {
-      "src": "/logo_192px.png",
+      "src": "logo-192px.png",
       "sizes": "192x192",
       "type": "image/png"
     }
