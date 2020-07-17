@@ -1,2 +1,10 @@
+<script>
+  import Nav from "./Nav.svelte";
+</script>
 
-<slot />
+<Nav />
+<div class="container">
+  <div class="row p-4">
+    <slot />
+  </div>
+</div>
