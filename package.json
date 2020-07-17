@@ -1,6 +1,8 @@
 {
-  "name": "svelte-app",
+  "name": "tallas",
   "version": "1.0.0",
+  "author": "jjjjoseignacio@gmail.com",
+  "description": "App para el mostrado de tallas de ropa",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
