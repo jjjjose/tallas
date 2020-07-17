@@ -4,7 +4,7 @@
 
 <Nav />
 <div class="container">
-  <div class="row p-4">
+  <div class="row p-2">
     <slot />
   </div>
 </div>
