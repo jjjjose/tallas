@@ -1,0 +1,14 @@
+{
+  "name": "tallas_theme",
+  "version": "1.0.0",
+  "description": "plantilla para mostrar las diferentes tallas de Ropa.",
+  "private": true,
+  "scripts": {
+    "tw": "tailwindcss build ./tailwind.css -o ./assets/css/app.css"
+  },
+  "keywords": [],
+  "author": "jjjjoseignacio@gmail.com",
+  "dependencies": {
+    "tailwindcss": "^1.3.1"
+  }
+}

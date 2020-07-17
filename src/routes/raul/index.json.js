@@ -1,10 +1,12 @@
-import posts from "../blog/_posts.js";
+import medidas from "./medidas";
+
+// simulando una api interna
 
 const contents = JSON.stringify(
-  posts.map((post) => {
+  medidas.map((med) => {
     return {
-      title: post.title,
-      slug: post.slug,
+      nombre: med.nombre,
+      medida: med.medida,
     };
   })
 );
