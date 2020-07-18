@@ -1,7 +1,7 @@
 module.exports = {
   purge: {
     // poner en true solo cuando se encuentre en produccion
-    enabled: true,
+    enabled: false,
     content: ["./*.html"],
   },
   theme: {

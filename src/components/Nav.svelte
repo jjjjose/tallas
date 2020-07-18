@@ -11,7 +11,7 @@
   <div
     on:click={cli}
     class="text-white text-2xl uppercase cursor-pointer font-bold">
-    Tallas
+    <i class="fas fa-tshirt"></i> Tallas
   </div>
   <div
     class="text-lg text-gray-500 flex justify-evenly w-6/12 font-light

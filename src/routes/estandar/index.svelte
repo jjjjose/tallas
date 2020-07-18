@@ -1,6 +1,6 @@
 <script context="module">
   export function preload({ params, query }) {
-    return this.fetch(`raul.json`)
+    return this.fetch(`estandar.json`)
       .then((r) => r.json())
       .then((medidas) => {
         return { medidas };
@@ -14,13 +14,6 @@
 
   // estado inicial de las medidas
   let estadoTalla = "M";
-
-  // cargando datos iniciales de la API
-  const cargando = () => {
-    mds = null;
-    mds = medidas;
-  };
-
   let aumentar = [
     {
       nombre: "Contorno de Pecho",
@@ -32,7 +25,7 @@
     },
     {
       nombre: "Largo",
-      sumar: 2,
+      sumar: 2.5,
     },
     {
       nombre: "Largo de Manga",
@@ -44,7 +37,7 @@
     },
     {
       nombre: "Hombro Tamaño",
-      sumar: 1,
+      sumar: 0.5,
     },
     {
       nombre: "Contorno de Cadera",
@@ -58,16 +51,67 @@
       nombre: "Contorno de Manga",
       sumar: 2,
     },
-    {
-      nombre: "Cierre",
-      sumar: 2,
-    },
+    // {
+    //   nombre: "Cierre",
+    //   sumar: 2,
+    // },
     {
       nombre: "Costado",
-      sumar: 2,
+      sumar: 2.5,
+    },
+  ];
+  let aumentarS = [
+    {
+      nombre: "Contorno de Pecho",
+      sumar: 4,
+    },
+    {
+      nombre: "Hombro",
+      sumar: 1,
+    },
+    {
+      nombre: "Largo",
+      sumar: 1.5,
+    },
+    {
+      nombre: "Largo de Manga",
+      sumar: 1,
+    },
+    {
+      nombre: "Contorno de Cintura",
+      sumar: 4,
+    },
+    {
+      nombre: "Hombro Tamaño",
+      sumar: 0.5,
+    },
+    {
+      nombre: "Contorno de Cadera",
+      sumar: 4,
+    },
+    {
+      nombre: "Contorno de Puño",
+      sumar: 1,
+    },
+    {
+      nombre: "Contorno de Manga",
+      sumar: 1,
+    },
+    // {
+    //   nombre: "Cierre",
+    //   sumar: 2,
+    // },
+    {
+      nombre: "Costado",
+      sumar: 1.5,
     },
   ];
 
+  // cargando datos iniciales de la API
+  const cargando = () => {
+    mds = null;
+    mds = medidas;
+  };
   cargando();
 
   const tallas = [
@@ -90,15 +134,19 @@
   ];
 
   function ver(index) {
-    return aumentar[index].sumar;
+    if (estadoTalla === "S") {
+      return aumentarS[index].sumar;
+    } else {
+      return aumentar[index].sumar;
+    }
   }
 
   const cambiar = (t) => {
     estadoTalla = t.talla;
-    console.log(estadoTalla);
+    // console.log(estadoTalla);
 
     // re-mostrando los nuevos valores de las medidas
-    calcular2();
+    calcular();
 
     let mod = {
       talla: t.talla,
@@ -119,45 +167,9 @@
       }
     });
   };
-  function calcular() {
-    let tallaL = [
-      {
-        nombre: "Contorno de Pecho",
-        sumar: 6,
-      },
-      {
-        nombre: "Hombro",
-        sumar: 1,
-      },
-      {
-        nombre: "Largo",
-        sumar: 2,
-      },
-      {
-        nombre: "Largo de Manga",
-        sumar: 2,
-      },
-    ];
-
-    let indice = 0;
-    this.pageEstaticas = [];
-    for (let i = 1; i <= medidas.length; i++) {
-      const indiceT = tallaL.findIndex(
-        (i) => i.nombre === medidas[indice].nombre
-      );
-      mds = [];
-      mds.push({
-        nombre: medidas[indice].nombre,
-        medida: medidas[indice].medida + tallaL[indiceT].sumar,
-      });
-      indice++;
-    }
-  }
-
-  const calcular2 = () => {
+  const calcular = () => {
     // datos para calcular el nuevo valor
     cargando();
-
     // estado para sumar
     let por = 1;
     switch (estadoTalla) {
@@ -178,19 +190,30 @@
     }
 
     if (estadoTalla !== "M") {
-      // basae apra iniciar el indice
+      // basae para iniciar el indice
       let indice = 0;
       mds = [];
+      if (estadoTalla === "S") {
+        for (let i = 1; i <= medidas.length; i++) {
+          const indiceT = aumentarS.findIndex(
+            (i) => i.nombre === medidas[indice].nombre
+          );
+          mds.push({
+            nombre: medidas[indice].nombre,
+            medida: medidas[indice].medida - aumentarS[indiceT].sumar * por,
+          });
+          indice++;
+        }
+        return;
+      }
+
       for (let i = 1; i <= medidas.length; i++) {
         const indiceT = aumentar.findIndex(
           (i) => i.nombre === medidas[indice].nombre
         );
         mds.push({
           nombre: medidas[indice].nombre,
-          medida:
-            estadoTalla === "S"
-              ? medidas[indice].medida - aumentar[indiceT].sumar * por
-              : medidas[indice].medida + aumentar[indiceT].sumar * por,
+          medida: medidas[indice].medida + aumentar[indiceT].sumar * por,
         });
         indice++;
       }
@@ -201,11 +224,11 @@
 </script>
 
 <svelte:head>
-  <title>Raul</title>
+  <title>Estandar</title>
 </svelte:head>
 
 <div class="w-full">
-  <div class="text-2xl text-white">Tallas de chamarra Raul</div>
+  <div class="text-2xl text-white">Tallas Estandar</div>
   <div class=" py-2">Selecciona una talla para ver sus medidas</div>
   <div
     class="w-full h-10 flex justify-between border-t border-r border-l
@@ -240,15 +263,21 @@
     <tbody>
       {#each mds as med, index}
         <tr class={index % 2 ? 'bg-indigo-800' : 'bg-indigo-900'}>
-          <td class="border border-gray-700 px-4 py-2">{med.nombre}</td>
+          <td class="border border-gray-700 px-4 py-2 text-xs sm:text-base">{med.nombre}</td>
 
-          <td class="border border-gray-700 px-4 py-2 text-center">
+          <td class="border border-gray-700 text-center text-xs">
             {med.medida} cm.
           </td>
           {#if estadoTalla !== 'M'}
-            <th class="border border-gray-700 px-4 py-2 text-center text-xs">
-              {ver(index)}
-            </th>
+            {#if estadoTalla === 'S'}
+              <th class="border border-gray-700 px-4 py-2 text-center text-xs">
+                {ver(index)}
+              </th>
+            {:else}
+              <th class="border border-gray-700 px-4 py-2 text-center text-xs">
+                {ver(index)}
+              </th>
+            {/if}
           {/if}
         </tr>
       {/each}

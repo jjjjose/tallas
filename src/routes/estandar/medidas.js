@@ -1,15 +1,17 @@
+// mis medidas oficila para blazer M
+
 const medidas = [
   {
     nombre: "Contorno de Pecho",
-    medida: 118,
+    medida: 110,
   },
   {
     nombre: "Hombro",
-    medida: 48,
+    medida: 42.6,
   },
   {
     nombre: "Largo",
-    medida: 68,
+    medida: 73,
   },
   {
     nombre: "Largo de Manga",
@@ -17,31 +19,31 @@ const medidas = [
   },
   {
     nombre: "Contorno de Cintura",
-    medida: 114,
+    medida: 101.2,
   },
   {
     nombre: "Hombro Tamaño",
-    medida: 14,
+    medida: 12.5,
   },
   {
     nombre: "Contorno de Cadera",
-    medida: 114,
+    medida: 108,
   },
   {
     nombre: "Contorno de Puño",
-    medida: 26,
+    medida: 28,
   },
   {
     nombre: "Contorno de Manga",
-    medida: 48,
+    medida: 43,
   },
-  {
-    nombre: "Cierre",
-    medida: 58,
-  },
+  // {
+  //   nombre: "Cierre",
+  //   medida: 58,
+  // },
   {
     nombre: "Costado",
-    medida: 40,
+    medida: 45,
   },
 ];
 
