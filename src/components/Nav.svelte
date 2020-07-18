@@ -23,10 +23,10 @@
       Estandar
     </a>
     <a
-      href="raul"
-      class="{segment === 'raul' ? 'border-b  border-indigo-200 text-indigo-200' : undefined}
+      href="nuevo"
+      class="{segment === 'nuevo' ? 'border-b  border-indigo-200 text-indigo-200' : undefined}
       ">
-      Raul
+      Nuevo
     </a>
   </div>
 </nav>

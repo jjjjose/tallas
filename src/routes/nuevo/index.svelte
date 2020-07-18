@@ -1,6 +1,6 @@
 <script context="module">
   export function preload({ params, query }) {
-    return this.fetch(`raul.json`)
+    return this.fetch(`nuevo.json`)
       .then((r) => r.json())
       .then((medidas) => {
         return { medidas };
@@ -205,7 +205,7 @@
 </svelte:head>
 
 <div class="w-full">
-  <div class="text-2xl text-white">Tallas de chamarra Raul</div>
+  <div class="text-2xl text-white">Tallas de chamarra Nuevo</div>
   <div class=" py-2">Selecciona una talla para ver sus medidas</div>
   <div
     class="w-full h-10 flex justify-between border-t border-r border-l
@@ -240,9 +240,13 @@
     <tbody>
       {#each mds as med, index}
         <tr class={index % 2 ? 'bg-indigo-800' : 'bg-indigo-900'}>
-          <td class="border border-gray-700 px-4 py-2">{med.nombre}</td>
+          <td class="border border-gray-700 px-4 py-2 text-xs sm:text-base">
+            {med.nombre}
+          </td>
 
-          <td class="border border-gray-700 px-4 py-2 text-center">
+          <td
+            class="border border-gray-700 px-4 py-2 text-center text-xs
+            sm:text-base">
             {med.medida} cm.
           </td>
           {#if estadoTalla !== 'M'}

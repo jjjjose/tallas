@@ -263,9 +263,11 @@
     <tbody>
       {#each mds as med, index}
         <tr class={index % 2 ? 'bg-indigo-800' : 'bg-indigo-900'}>
-          <td class="border border-gray-700 px-4 py-2 text-xs sm:text-base">{med.nombre}</td>
+          <td class="border border-gray-700 px-4 py-2 text-xs sm:text-base">
+            {med.nombre}
+          </td>
 
-          <td class="border border-gray-700 text-center text-xs">
+          <td class="border border-gray-700 text-center text-xs sm:text-base">
             {med.medida} cm.
           </td>
           {#if estadoTalla !== 'M'}

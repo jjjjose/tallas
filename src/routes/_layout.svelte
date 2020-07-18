@@ -1,5 +1,6 @@
 <script>
   import Nav from "../components/Nav.svelte";
+  import Foot from "../components/Foot.svelte";
 
   export let segment;
 </script>
@@ -20,3 +21,4 @@
 <main class="min-h-screen text-indigo-200 p-3">
   <slot />
 </main>
+<Foot />
